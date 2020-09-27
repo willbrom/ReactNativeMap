@@ -4,10 +4,12 @@ import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 
 import { Searchbar, Banner, Button } from "react-native-paper";
 import MapView, { Marker } from "react-native-maps";
+import { BottomSheet } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function App() {
   const [searchValue, setSearchValue] = useState("");
+  const [visible, setVisible] = useState(true);
   let searchRef = React.createRef();
 
   const mapRegion = {
@@ -73,7 +75,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Banner
-        visible={true}
+        visible={visible}
         actions={[
           {
             label: "Fix it",
