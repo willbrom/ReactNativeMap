@@ -1,8 +1,8 @@
 import React from "react";
-import { Text, View, TouchableHighlight } from "react-native";
+import { Text, View, TouchableHighlight, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import { styles } from "../styles/style";
+const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export default function HomeCard(props) {
   return (
@@ -27,3 +27,13 @@ export default function HomeCard(props) {
     </TouchableHighlight>
   );
 }
+
+const styles = StyleSheet.create({
+  homeCard: {
+    width: SCREEN_WIDTH / 2 - 4,
+    height: 100,
+    margin: 2,
+    borderRadius: 8,
+    backgroundColor: "#3BA9E5",
+  },
+});
