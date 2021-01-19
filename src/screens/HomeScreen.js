@@ -8,6 +8,7 @@ import {
   ScrollView,
   FlatList,
   Platform,
+  Dimensions,
   StyleSheet,
 } from "react-native";
 import { Searchbar, FAB, Provider, Portal } from "react-native-paper";
@@ -15,6 +16,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MapView, { Marker } from "react-native-maps";
 import Icon from "react-native-vector-icons/FontAwesome";
+
+import Alarms from "./AlarmScreen";
 
 import HomeCard from "../components/HomeCard";
 import RadioButton from "../components/RadioButton";
@@ -41,6 +44,11 @@ export default function Main() {
           component={Map}
           options={{ headerShown: Platform.OS === "ios" }}
         />
+        <Stack.Screen
+          name="Alarms"
+          component={Alarms}
+          options={{ headerShown: Platform.OS === "ios" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -50,12 +58,21 @@ function Home({ navigation }) {
   let data = [
     { id: 1, title: "Map", path: "Map", icon: "map" },
     { id: 0, title: "Charts", path: "null", icon: "bar-chart" },
-    { id: 2, title: "Alarms", path: "null", icon: "bell" },
+    { id: 2, title: "Alarms", path: "Alarms", icon: "bell" },
     { id: 3, title: "Vendors", path: "null", icon: "connectdevelop" },
   ];
 
-  const navigateTo = (path) =>
-    path === "Map" ? navigation.navigate(path) : null;
+  const navigateTo = (path) => {
+    switch (path) {
+      case "Map":
+        navigation.navigate(path);
+        break;
+      case "Alarms":
+        navigation.navigate(path);
+      default:
+        break;
+    }
+  };
 
   return (
     <View style={{ flex: 1 }}>

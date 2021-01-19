@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, TouchableHighlight, StyleSheet } from "react-native";
+import { Text, View, TouchableHighlight, Dimensions, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
